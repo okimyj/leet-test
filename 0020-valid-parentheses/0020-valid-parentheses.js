@@ -9,11 +9,11 @@ var isValid = function(s) {
     const opens = "({["
     const stack = []
     let check = true;
-    for(let i=0; i<s.length; ++i){
+    for(let i=0; i<s.length; ++i){    // O(n)
       if(opens.includes(s[i]))
-        stack.push(s[i]);
+        stack.push(s[i]);   // O(1)
       else{
-        if(stack.length <= 0 || !isMatch(stack.pop(), s[i])){
+        if(stack.length <= 0 || !isMatch(stack.pop(), s[i])){   // O(1)
           check = false;
           break;
         }
@@ -21,3 +21,4 @@ var isValid = function(s) {
     }
     return check && stack.length <= 0;
 };
+// 시간 복잡도 : O(n)
