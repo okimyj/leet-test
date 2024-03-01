@@ -27,7 +27,6 @@ var shortestPathBinaryMatrix = function(grid) {
             const next_y = cur_y + dy[i];
             if(next_x >= 0 && next_x < col && next_y >= 0 && next_y < row){
                 if(grid[next_y][next_x] === 0 && !visited[next_y][next_x]){
-                    console.log("push reserve ", next_x, ", ", next_y)
                     reserve.push([next_y, next_x, cur_len+1]);
                     visited[next_y][next_x] = true;
                 }
