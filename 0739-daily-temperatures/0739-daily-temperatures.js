@@ -14,3 +14,6 @@ var dailyTemperatures = function(temperatures) {
   }
   return output;
 };
+
+
+// 시간 복잡도 O(n)
