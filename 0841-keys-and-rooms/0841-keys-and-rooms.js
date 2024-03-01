@@ -2,6 +2,7 @@
  * @param {number[][]} rooms
  * @return {boolean}
  */
+/*
 var canVisitAllRooms = function(rooms) {
     const visited = new Set([0]);
     // const visited = {0:true}
@@ -24,20 +25,18 @@ var canVisitAllRooms = function(rooms) {
         
     }
     return visited.size === rooms.length;
-}
-/*
+}*/
+//*
 // dfs
 var canVisitAllRooms = function(rooms) {
     if(!rooms || rooms.length <= 0)
         return false;
-    const visited = [true];
-    let visitedNum = 1;
+    const visited = new Set([0]);
     const dfs = (keys)=>{
         for(let i=0; i<keys.length; ++i){
             const roomKey = keys[i];
-            if(!visited[roomKey]){
-                visited[roomKey] = true;
-                ++visitedNum;
+            if(!visited.has(roomKey)){
+                visited.add(roomKey);
                 dfs(rooms[roomKey]);
             }
                 
@@ -45,5 +44,6 @@ var canVisitAllRooms = function(rooms) {
     }
     dfs(rooms[0])
     
-    return visitedNum === rooms.length;
-};*/
+    return visited.size === rooms.length;
+};
+//*/
