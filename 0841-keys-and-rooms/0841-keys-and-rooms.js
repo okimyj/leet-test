@@ -31,18 +31,19 @@ var canVisitAllRooms = function(rooms) {
 var canVisitAllRooms = function(rooms) {
     if(!rooms || rooms.length <= 0)
         return false;
-    const visited = new Set([0]);
-    const dfs = (keys)=>{
-        for(let i=0; i<keys.length; ++i){
-            const roomKey = keys[i];
-            if(!visited.has(roomKey)){
-                visited.add(roomKey);
-                dfs(rooms[roomKey]);
+    const visited = new Set();
+    const dfs = (curRoom)=>{
+        visited.add(curRoom);
+        for(let i=0; i<rooms[curRoom].length; ++i){
+            const nextRoom = rooms[curRoom][i];
+            if(!visited.has(nextRoom)){
+                visited.add(nextRoom);
+                dfs(nextRoom);
             }
                 
         }
     }
-    dfs(rooms[0])
+    dfs(0)
     
     return visited.size === rooms.length;
 };
